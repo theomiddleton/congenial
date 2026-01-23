@@ -30,9 +30,13 @@ export default function DashboardPage() {
   } | null>(null)
   const [passkeys, setPasskeys] = React.useState<Passkey[]>([])
   const [isLoadingPasskeys, setIsLoadingPasskeys] = React.useState(false)
-  const [editingPasskeyId, setEditingPasskeyId] = React.useState<string | null>(null)
+  const [editingPasskeyId, setEditingPasskeyId] = React.useState<string | null>(
+    null,
+  )
   const [editingName, setEditingName] = React.useState('')
-  const [deletingPasskeyId, setDeletingPasskeyId] = React.useState<string | null>(null)
+  const [deletingPasskeyId, setDeletingPasskeyId] = React.useState<
+    string | null
+  >(null)
 
   const fetchPasskeys = React.useCallback(async () => {
     setIsLoadingPasskeys(true)
@@ -69,9 +73,15 @@ export default function DashboardPage() {
     })
 
     if (error) {
-      setPasskeyMessage({ type: 'error', text: error.message ?? 'Failed to add passkey' })
+      setPasskeyMessage({
+        type: 'error',
+        text: error.message ?? 'Failed to add passkey',
+      })
     } else {
-      setPasskeyMessage({ type: 'success', text: 'Passkey registered successfully!' })
+      setPasskeyMessage({
+        type: 'success',
+        text: 'Passkey registered successfully!',
+      })
       await fetchPasskeys()
     }
 
@@ -85,9 +95,15 @@ export default function DashboardPage() {
     const { error } = await authClient.passkey.deletePasskey({ id })
 
     if (error) {
-      setPasskeyMessage({ type: 'error', text: error.message ?? 'Failed to delete passkey' })
+      setPasskeyMessage({
+        type: 'error',
+        text: error.message ?? 'Failed to delete passkey',
+      })
     } else {
-      setPasskeyMessage({ type: 'success', text: 'Passkey deleted successfully!' })
+      setPasskeyMessage({
+        type: 'success',
+        text: 'Passkey deleted successfully!',
+      })
       await fetchPasskeys()
     }
 
@@ -118,9 +134,15 @@ export default function DashboardPage() {
     })
 
     if (error) {
-      setPasskeyMessage({ type: 'error', text: error.message ?? 'Failed to update passkey' })
+      setPasskeyMessage({
+        type: 'error',
+        text: error.message ?? 'Failed to update passkey',
+      })
     } else {
-      setPasskeyMessage({ type: 'success', text: 'Passkey renamed successfully!' })
+      setPasskeyMessage({
+        type: 'success',
+        text: 'Passkey renamed successfully!',
+      })
       await fetchPasskeys()
     }
 
@@ -169,7 +191,7 @@ export default function DashboardPage() {
               <p
                 className={`text-sm ${
                   passkeyMessage.type === 'success'
-                    ? 'text-green-600 dark:text-green-400'
+                    ? 'text-green-600'
                     : 'text-destructive'
                 }`}
               >
@@ -182,9 +204,13 @@ export default function DashboardPage() {
           <div className="space-y-3">
             <h3 className="text-sm font-medium">Your Passkeys</h3>
             {isLoadingPasskeys ? (
-              <p className="text-sm text-muted-foreground">Loading passkeys...</p>
+              <p className="text-sm text-muted-foreground">
+                Loading passkeys...
+              </p>
             ) : passkeys.length === 0 ? (
-              <p className="text-sm text-muted-foreground">No passkeys registered yet.</p>
+              <p className="text-sm text-muted-foreground">
+                No passkeys registered yet.
+              </p>
             ) : (
               <ul className="space-y-2">
                 {passkeys.map((passkey) => (
@@ -224,7 +250,8 @@ export default function DashboardPage() {
                           </p>
                           {passkey.createdAt && (
                             <p className="text-xs text-muted-foreground">
-                              Added {new Date(passkey.createdAt).toLocaleDateString()}
+                              Added{' '}
+                              {new Date(passkey.createdAt).toLocaleDateString()}
                             </p>
                           )}
                         </div>
@@ -243,7 +270,9 @@ export default function DashboardPage() {
                             onClick={() => handleDeletePasskey(passkey.id)}
                             disabled={deletingPasskeyId === passkey.id}
                           >
-                            {deletingPasskeyId === passkey.id ? 'Deleting...' : 'Delete'}
+                            {deletingPasskeyId === passkey.id
+                              ? 'Deleting...'
+                              : 'Delete'}
                           </Button>
                         </div>
                       </div>
