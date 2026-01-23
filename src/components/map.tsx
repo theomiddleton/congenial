@@ -91,9 +91,7 @@ export function Map() {
 
   if (!mounted) {
     return (
-      <div
-        className="w-full overflow-x-hidden flex items-center justify-center p-4 bg-card"
-      >
+      <div className="w-full overflow-x-hidden flex items-center justify-center p-4 bg-card">
         <div className="flex justify-center items-center w-full">
           <div
             className="bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg"
@@ -109,9 +107,7 @@ export function Map() {
   }
 
   return (
-    <div
-      className="w-full overflow-x-hidden flex items-center justify-center p-4 bg-card relative"
-    >
+    <div className="w-full overflow-x-hidden flex items-center justify-center p-4 bg-card relative">
       <button
         onClick={toggleTheme}
         className="absolute top-4 right-4 z-10 p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
