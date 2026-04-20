@@ -58,11 +58,14 @@ export default function Home() {
 
           <div className="mt-12 flex items-center justify-center gap-4">
             <Button
+              asChild
               size="lg"
               className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              {'Begin Alignment'}
-              <ArrowRight className="h-4 w-4" />
+              <a href="/chat">
+                {'Begin Alignment'}
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </Button>
             <Button
               variant="outline"
@@ -314,11 +317,14 @@ export default function Home() {
           </p>
           <div className="mt-10 flex items-center justify-center gap-4">
             <Button
+              asChild
               size="lg"
               className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              {'Request Integration'}
-              <ArrowRight className="h-4 w-4" />
+              <a href="/chat">
+                {'Request Integration'}
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </Button>
             <Button
               variant="outline"
